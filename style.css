@@ -4,6 +4,7 @@ body{
 	display: flex;
 	justify-content: center;
 	justify-items: center;
+	min-height: 100vh;
 }
 .bubble{
 	height: 200px;
