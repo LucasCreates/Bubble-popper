@@ -1,6 +1,6 @@
 body{
 	margin: 0;
-	
+	background: lavender;
 	display: flex;
 	justify-content: center;
 	justify-items: center;
@@ -10,14 +10,19 @@ body{
 	width: 200px;
 	cursor: pointer;
 	border-radius: 100%;
-	margin: 50px;
-	padding: 20px;
+	
+
     
 }
+p{
+	color: #000;
+	position: absolute;
+}
 .container{
-	flex:1;
+	position: absolute;
 	background: lavender;
 	height: 935px;
+	width: 100%;
 }
 
 

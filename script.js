@@ -29,7 +29,7 @@ function randomBubbles(amount){
 		newBubble.src = "images/1.png"
 		let setHeightWidth = randomNum(300);
 		newBubble.setAttribute('style', `position: absolute; left: ${randomNum(85)}%; top: ${randomNum(600)}px; height:${setHeightWidth}px; width:${setHeightWidth}px; `)
-		container.appendChild(newBubble);
+		body.appendChild(newBubble);
 		newBubble.addEventListener('click', function(e){
 			play();
 			bubbleCount = 1

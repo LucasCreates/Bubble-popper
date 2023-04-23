@@ -1,0 +1,53 @@
+body{
+	margin: 0;
+	
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+}
+.bubble{
+	height: 200px;
+	width: 200px;
+	cursor: pointer;
+	border-radius: 100%;
+	
+
+    
+}
+p{
+	color: #000;
+	position: absolute;
+}
+.container{
+	flex:1;
+	background: lavender;
+	height: 935px;
+}
+
+
+::selection {
+    color: none;
+    background: none;
+}
+ For Mozilla Firefox */
+::-moz-selection {
+    color: none;
+    background: none;
+}
+img:active{
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+img::-moz-selection {
+    background-color: transparent;
+    color: #000;
+}
+
+img::selection {
+    background-color: transparent;
+    color: #000;
+}
