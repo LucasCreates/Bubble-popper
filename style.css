@@ -5,6 +5,7 @@ body{
 	justify-content: center;
 	justify-items: center;
 	min-height: 100vh;
+	flex-direction: column;
 }
 .bubble{
 	height: 200px;
@@ -15,16 +16,55 @@ body{
 
     
 }
+
+
+.nav-bar{
+	background: #ffca75;
+	height: 100px;
+	width: 100%;
+	flex: 1;
+	
+	
+	position: absolute;
+}
+
 p{
 	color: #000;
 	position: absolute;
 }
 .container{
-	position: absolute;
+	flex: 1;
+	display: block;
+	
 	background: lavender;
-	height: 935px;
+	height: 500px;
 	width: 100%;
 }
+
+
+
+
+
+.footer{
+	width: 100%;
+	height: 100px;
+	color: #2ca4db;
+	flex: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ::selection {
