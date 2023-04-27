@@ -13,10 +13,7 @@ function removeElements(elements){
     }
 }
 
-function remove(el) {
-  let element = el;
-  element.remove();
-}
+
 
 function play(){
 	const audio = document.getElementById("audio");
@@ -89,24 +86,11 @@ function makeBubblesFloat(){
 			
 }
 
-const timer = (time) => time; 
+const timer = (time) => time; //need to delete, but first check if it has any dependencies 
 
 
-// var i = 1;                  //  set your counter to 1
 
-// function myLoop() {         //  create a loop function
-//   setTimeout(function() {   //  call a 3s setTimeout when the loop is called
-//     console.log('hello');   //  your code here
-//     i++;                    //  increment the counter
-//     if (i < 10) {           //  if the counter < 10, call the loop function
-//       myLoop();             //  ..  again which will trigger another 
-//     }                       //  ..  setTimeout()
-//   }, 3000)
-// }
-
-// myLoop(); 
-
-function testBubbleCreate(i){
+function bubbleCreate(){
 	bubble = document.createElement("img");
 	bubble.classList.add("bubble") // adds a general class to newly created img element
 	bubble.src = "images/1.png" // displays the first set of images before it animate through the cycle
@@ -114,7 +98,7 @@ function testBubbleCreate(i){
 	const height = bubble.style.height = setHeightWidth
 	const width = bubble.style.width = setHeightWidth
 	bubble.setAttribute('style', `position: absolute; left: ${randomNum(90)}%; top: 750px; height:${height}px; width:${width}px;`)
-	setScore(height, width);
+	
 	bubbleArray.push(bubble)
 	container.appendChild(bubble);
 	makeBubblesFloat();
@@ -132,7 +116,7 @@ function createBubbles(){
 	
 		
 		let i = 0;
-		while (i < 8) {
+		while (i < 20) {
   		loop(i);
   		i++
 		}
@@ -140,15 +124,15 @@ function createBubbles(){
 
 	function loop(i){
   		setTimeout(function(){
-    		testBubbleCreate()
+    		bubbleCreate()
     		setTimeout(() =>{
     			removeImg();
-    		}, "8000");
+    		}, "10000");
 
 	
-			bubble.addEventListener('mouseover', function(e){
+			bubble.addEventListener('click', function(e, height, width){
 						play();
-						
+						setScore(height, width);
 						bubbleAnimationStage = 1;
 						animationStage(e, 1);
 						setTimeout(() => {
