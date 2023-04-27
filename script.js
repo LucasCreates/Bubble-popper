@@ -4,6 +4,8 @@ const container = document.querySelector(".container");
 const printScore = document.getElementById("score");
 let score = 0
 let point = 10
+let bubbleArray = [bubble, bubble, bubble, bubble]
+
 
 function removeElements(elements){
     for(var i = 0; i < elements.length; i++){
@@ -75,70 +77,117 @@ function animationStage(e, count){
 	}
 }
 
+function makeBubblesFloat(){
+
+		const bubbleFloat = { transform: "translateY(-100vw)"};
+		const bubbleTiming = {
+		duration: 10000,
+		iterations: 1,	
+		}
+	bubble.animate(bubbleFloat, bubbleTiming);
+
+			
+}
+
 const timer = (time) => time; 
 
-function createBubbles(amount){
-	for (let i = 0; i < amount; i++){
-		bubble = document.createElement("img"); //create new image element 
-		bubble.classList.add("bubble") // adds a general class to newly created img element
-		bubble.src = "images/1.png" // displays the first set of images before it animate through the cycle
-		let setHeightWidth = randomNum(200);
-		let height = bubble.style.height = setHeightWidth
-		let width = bubble.style.width = setHeightWidth
-		bubble.setAttribute('style', `position: absolute; left: ${randomNum(90)}%; top: ${randomNum(700)}px; height:${height}px; width:${width}px;`)
-		container.appendChild(bubble);
-		bubble.addEventListener('click', function(e){
-			play();
-			setScore(height, width);
-			bubbleAnimationStage = 1;
-			
 
-			// for( let i = 1; i <= 10; i++){
-			// 	setTimeout(() =>{
-			// 		console.log(animationStage(e, i))
-			// 		bubbleAnimationStage++
-			// 	}, timer(1370))
-			// 	timer(1370) + 50
-				
-			// }
+// var i = 1;                  //  set your counter to 1
+
+// function myLoop() {         //  create a loop function
+//   setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+//     console.log('hello');   //  your code here
+//     i++;                    //  increment the counter
+//     if (i < 10) {           //  if the counter < 10, call the loop function
+//       myLoop();             //  ..  again which will trigger another 
+//     }                       //  ..  setTimeout()
+//   }, 3000)
+// }
+
+// myLoop(); 
+
+function testBubbleCreate(i){
+	bubble = document.createElement("img");
+	bubble.classList.add("bubble") // adds a general class to newly created img element
+	bubble.src = "images/1.png" // displays the first set of images before it animate through the cycle
+	let setHeightWidth = randomNum(200);
+	const height = bubble.style.height = setHeightWidth
+	const width = bubble.style.width = setHeightWidth
+	bubble.setAttribute('style', `position: absolute; left: ${randomNum(90)}%; top: 750px; height:${height}px; width:${width}px;`)
+	setScore(height, width);
+	bubbleArray.push(bubble)
+	container.appendChild(bubble);
+	makeBubblesFloat();
+}	
 
 
-			animationStage(e, 1);
-				setTimeout(() => {
-	 			    animationStage(e, 2);
-				}, "70");
-				
-				setTimeout(() => {
-	 			 	animationStage(e, 3);
-				}, "100");
-				setTimeout(() => {
-	 			 	animationStage(e, 4);
-				}, "130");
-				setTimeout(() => {
-	 			 	animationStage(e, 5)
-				}, "160");
-				setTimeout(() => {
-	 			 	animationStage(e, 6)
-				}, "190");
-				setTimeout(() => {
-	 			 	animationStage(e, 7)
-				}, "220");
-				setTimeout(() => {
-	 			 	animationStage(e, 8)
-				}, "250");
-				setTimeout(() => {
-	 			 	animationStage(e, 9)
-				}, "270");
-				setTimeout(() => {
-	 			 	animationStage(e, 10)
-					remove(this);
-				}, "290");
-		}) // addeventlistenr
+function removeImg(){
+	const images = document.getElementById("image-parent");
+	images.removeChild(images.firstElementChild);
+}
+
+function createBubbles(){
+
+
+	
 		
-	} //for loop
+		let i = 0;
+		while (i < 8) {
+  		loop(i);
+  		i++
+		}
+		
 
-} // function
+	function loop(i){
+  		setTimeout(function(){
+    		testBubbleCreate()
+    		setTimeout(() =>{
+    			removeImg();
+    		}, "8000");
 
+	
+			bubble.addEventListener('mouseover', function(e){
+						play();
+						
+						bubbleAnimationStage = 1;
+						animationStage(e, 1);
+						setTimeout(() => {
+			 			    animationStage(e, 2);
+						}, "70");
+						
+						setTimeout(() => {
+			 			 	animationStage(e, 3);
+						}, "100");
+						setTimeout(() => {
+			 			 	animationStage(e, 4);
+						}, "130");
+						setTimeout(() => {
+			 			 	animationStage(e, 5)
+						}, "160");
+						setTimeout(() => {
+			 			 	animationStage(e, 6)
+						}, "190");
+						setTimeout(() => {
+			 			 	animationStage(e, 7)
+						}, "220");
+						setTimeout(() => {
+			 			 	animationStage(e, 8)
+						}, "250");
+						setTimeout(() => {
+			 			 	animationStage(e, 9)
+						}, "270");
+						setTimeout(() => {
+			 			 	animationStage(e, 10)
+							remove(this);
+						}, "290");
+					}) // addeventlistener mouseover
+			
+  		}, 2000 * i)
+	}
+
+
+	//window load
+};// function
 
 // function createBubbles(amount){
 // 	for (let i = 0; i < amount; i++){
@@ -223,9 +272,7 @@ function createBubbles(amount){
 // 	} //for loop
 
 // } // function
-function randomNum(num){
-	return Math.floor(Math.random()* num) + 1
-}
-createBubbles(10)
+function randomNum(num){ return Math.floor(Math.random()* num) + 1 };
+createBubbles();
 
 
